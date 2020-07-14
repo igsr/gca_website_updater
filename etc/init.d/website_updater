@@ -9,7 +9,7 @@
 # Description:      Starts website_updater using hypnotoad
 ### END INIT INFO
  
-WU_HOME=/nfs/public/rw/reseq-info/static_website_updater/gca_website_updater
+WU_HOME=/nfs/public/rw/igsr/static_website_updater/gca_website_updater
 SCRIPT=$WU_HOME/scripts/website_updater/website_updater.pl
 
 test -d $WU_HOME || exit 0
