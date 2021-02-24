@@ -13,7 +13,7 @@ sub run {
   my ($self) = @_;
 
   my $dir = $self->local_dir;
-  my $rsync = File::Rsync->new(archive => 1, compress => 1, 'delete-after' => 1);
+  my $rsync = File::Rsync->new(archive => 1, compress => 1, 'delete-after' => 1, moddebug  => 0);
   foreach my $dest (@{$self->remote_dests}) {
     $rsync->exec(src => $self->local_dir, dest => $dest)
       or die sprintf('could not rsync %s to %s: %s', $self->local_dir, $dest, scalar $rsync->lastcmd);

@@ -30,18 +30,14 @@
             master => {
                 git_directory => '/nfs/public/rw/igsr/igsr_website_staging/gca_1000genomes_website/',
                 rsync_dests => [
-                      '/nfs/public/rw/igsr/igsr_website/www_static/',
-                      'wp-p1m-a3:/nfs/public/rw/igsr/igsr_website/www_static/',
+                      '/nfs/public/rw/igsr/igsr_website_staging/www_static/',
+		      'wp-np2-1c:/nfs/public/rw/igsr/igsr_website_staging/www_static/',
                     ],
-
-                # Disabled pubsubhubbub, to disable automatic tweets
-                # pubsubhubbub => 'announcements/rss.xml',
-
-                es_sitemap_index => {
-                    hosts => [ 'wp-np2-1b:9200', 'wp-p1m-a2:9200', 'wp-p2m-3b:9200'],
-                    search_index_file => 'search_index.json'
-                  },
                 email_to => 'igsr-notifications@ebi.ac.uk',
+		es_sitemap_index => {
+                    hosts => [ 'wp-np2-1b:9200'],
+                    search_index_file => 'search_index.json'
+                },
             },
             'test.internationalgenome.org' => {
                 git_directory => '/nfs/public/rw/igsr/igsr_website_staging/gca_1000genomes_website/',
@@ -50,15 +46,18 @@
                     ],
                 email_to => 'igsr-notifications@ebi.ac.uk',
             },
-	    'test_newvms_elowy' => {
-                git_directory => '/nfs/public/rw/igsr/igsr_website_staging/gca_1000genomes_website/',
+        },
+
+	igsr_test => {
+	   'test_newvms_elowy' => {
+	        git_directory => '/nfs/public/rw/igsr/igsr_website_staging/gca_1000genomes_website/',
                 rsync_dests => [
                       '/nfs/public/rw/igsr/igsr_website_staging/www_static/',
-                      'wp-np2-1c:/nfs/public/rw/igsr/igsr_website_staging/www_static/',
                     ],
                 email_to => 'igsr-notifications@ebi.ac.uk',
-            },
-	 },
+	   },
+	},
+
     },
 
     email_from => 'vg_igsr_adm@ebi.ac.uk',

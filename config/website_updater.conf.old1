@@ -50,15 +50,18 @@
                     ],
                 email_to => 'igsr-notifications@ebi.ac.uk',
             },
-	    'test_newvms_elowy' => {
-                git_directory => '/nfs/public/rw/igsr/igsr_website_staging/gca_1000genomes_website/',
+        },
+
+	igsr_test => {
+	   'test_newvms_elowy' => {
+	        git_directory => '/nfs/public/rw/igsr/igsr_website_staging/gca_1000genomes_website/',
                 rsync_dests => [
                       '/nfs/public/rw/igsr/igsr_website_staging/www_static/',
-                      'wp-np2-1c:/nfs/public/rw/igsr/igsr_website_staging/www_static/',
                     ],
                 email_to => 'igsr-notifications@ebi.ac.uk',
-            },
-	 },
+	   },
+	},
+
     },
 
     email_from => 'vg_igsr_adm@ebi.ac.uk',

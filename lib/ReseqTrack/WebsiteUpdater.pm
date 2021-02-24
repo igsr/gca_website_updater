@@ -1,5 +1,6 @@
 package ReseqTrack::WebsiteUpdater;
 use Mojo::Base 'Mojolicious';
+use Data::Dumper;
 
 sub startup {
     my ($self) = @_;

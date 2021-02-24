@@ -3,6 +3,7 @@ use namespace::autoclean;
 use Moose;
 use Mojo::Util qw(slurp);
 use HTTP::Tiny;
+use Data::Dumper;
 use Mojo::JSON qw(encode_json decode_json);
 use HTML::Entities qw();
 
@@ -35,6 +36,7 @@ sub load_index {
   my $response = $ua->post("$index_type_base_url/_search?search_type=scan&scroll=1m", {
     content => encode_json({query => {match_all => {}}}),
   });
+
   my $scroll_id = decode_json($response->{content})->{_scroll_id};
   die "did not get scroll id" if !$scroll_id;
   SCROLL:

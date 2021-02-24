@@ -1,0 +1,1 @@
+rsync --archive --compress --delete-after /nfs/public/rw/igsr/igsr_website_staging/gca_1000genomes_website//_site/ wp-np2-1c:/nfs/public/rw/igsr/igsr_website_staging/www_static/

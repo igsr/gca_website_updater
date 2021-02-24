@@ -7,6 +7,7 @@ use ReseqTrack::WebsiteUpdater::Model::GitUpdater;
 use ReseqTrack::WebsiteUpdater::Model::Rsyncer;
 use ReseqTrack::WebsiteUpdater::Model::NPMBuilder;
 use Mojo::IOLoop::ForkCall;
+use Data::Dumper;
 
 =pod
 
@@ -31,7 +32,7 @@ sub update_project {
   my ($self) = @_;
   eval {
     my $payload = $self->req->json;
-    if (ref($payload) != 'HASH' || !defined $payload->{ref} || ref($payload->{ref})) {
+    if (ref($payload) ne 'HASH' || !defined $payload->{ref} || ref($payload->{ref})) {
       return $self->render(text => 'no "ref" in the payload', status => 400);
     }
     my ($git_branch) = $payload->{ref} =~ m{^refs/heads/(.+)};
@@ -85,7 +86,6 @@ sub _run_update_process {
       ReseqTrack::WebsiteUpdater::Model::NPMBuilder->new(
             directory => $project_config->{git_directory},
           )->run;
-      
       ReseqTrack::WebsiteUpdater::Model::Rsyncer->new(
             local_dir => $project_config->{git_directory} .'/_site/',
             remote_dests => $project_config->{rsync_dests},
